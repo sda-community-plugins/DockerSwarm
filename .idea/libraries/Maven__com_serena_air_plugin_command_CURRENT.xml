@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:air-plugin-command:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-command/CURRENT/air-plugin-command-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-command/CURRENT/air-plugin-command-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-command/CURRENT/air-plugin-command-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

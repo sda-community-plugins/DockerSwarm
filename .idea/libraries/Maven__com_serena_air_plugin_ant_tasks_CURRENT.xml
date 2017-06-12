@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:air-plugin-ant-tasks:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-ant-tasks/CURRENT/air-plugin-ant-tasks-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-ant-tasks/CURRENT/air-plugin-ant-tasks-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/air-plugin-ant-tasks/CURRENT/air-plugin-ant-tasks-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

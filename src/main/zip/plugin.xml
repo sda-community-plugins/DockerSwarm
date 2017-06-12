@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin xmlns="http://www.urbancode.com/PluginXMLSchema_v1">
+    <header>
+        <identifier id="com.serena.air.plugin.DockerSwarm" name="Docker Swarm" version="1"/>
+        <description>
+            Provides tasks to interact with Docker in Swarm mode.
+        </description>
+        <tag>Integration/Configuration Management/Docker Swarm</tag>
+    </header>
+
+    <step-type name="Docker Stack Deploy">
+        <description>This step starts all of the applications services that are defined in stack's compose file
+            (docker stack deploy).
+        </description>
+        <properties>
+            <property name="composeFile">
+                <property-ui type="textBox"
+                             label="Compose File"
+                             description="A path to a Compose YAML file. The default Compose file is docker-compose.yml."/>
+            </property>
+            <property name="stackName" required="true">
+                <property-ui type="textBox"
+                             label="Stack Name"
+                             description="The name of the stack that is being deployed."/>
+            </property>
+            <property name="dockerOptions">
+                <property-ui type="textBox"
+                             label="Additional Options"
+                             description="Specify additional command-line options for the docker command."/>
+            </property>
+            <property name="scriptPaths">
+                <property-ui type="textBox"
+                             label="Environment Script Paths"
+                             description="Specify the paths to shell scripts to run before the docker command runs.
+                                This property is utilized only on *nix machines."/>
+            </property>
+            <property name="commandPath" required="false">
+                <property-ui type="textBox" hidden="true"
+                             label="Docker Path"
+                             description="The name of the docker command if it is in the system path,
+                                or the full path to run the docker command."/>
+            </property>
+            <property name="envPropValues">
+                <property-ui type="textAreaBox"
+                             label="Environment Property Values"
+                             hidden="true"
+                             description="Specify environment variables by separating the name and value by an
+                                equals sign and each pair by a newline or comma. Values specified here will
+                                take precedence over the environment script variables."
+                             default-value="${p:environment/allProperties}"/>
+            </property>
+            <property name="saveScript">
+                <property-ui type="checkBox"
+                             label="Do Not Delete Script" hidden="true"
+                             description="Select to save the plugin's generated executable script to analyze and run manually later."
+                             default-value="false"/>
+            </property>
+            <property name="verbose" required="false">
+                <property-ui type="checkBox" label="Verbose Output" hidden="true"
+                             description="Select this option to display verbose output during execution."/>
+            </property>
+            <property name="debug" required="false">
+                <property-ui type="checkBox" label="Debug Output" hidden="true"
+                             description="Select this option to display debug output during execution."/>
+            </property>
+        </properties>
+        <post-processing><![CDATA[
+        if (properties.get("exitCode") != 0) {
+            properties.put("Status", "Failure");
+        }
+        else {
+            properties.put("Status", "Success");
+        }
+     ]]></post-processing>
+        <command program="${GROOVY_HOME}/bin/groovy">
+            <arg value="-cp"/>
+            <arg path="classes:lib/DockerSwarm.jar"/>
+            <arg value="-Djnp.disableDiscovery=true"/>
+            <arg file="StackDeploy.groovy"/>
+            <arg file="${PLUGIN_INPUT_PROPS}"/>
+            <arg file="${PLUGIN_OUTPUT_PROPS}"/>
+        </command>
+    </step-type>
+
+    <step-type name="Docker Stack Remove">
+        <description>This step stops all of the applications services for the specified stack (docker stack rm).</description>
+        <properties>
+            <property name="stackName" required="true">
+                <property-ui type="textBox"
+                             label="Stack Name"
+                             description="The name of the stack."/>
+            </property>
+            <property name="dockerOptions">
+                <property-ui type="textBox"
+                             label="Additional Options"
+                             description="Specify additional command-line options for the docker command."/>
+            </property>
+            <property name="scriptPaths">
+                <property-ui type="textBox"
+                             label="Environment Script Paths"
+                             description="Specify the paths to shell scripts to run before the docker command runs.
+                                This property is utilized only on *nix machines."/>
+            </property>
+            <property name="commandPath" required="false">
+                <property-ui type="textBox" hidden="true"
+                             label="Compose Path"
+                             description="The name of the docker command if it is in the system path,
+                                or the full path to run the docker command."/>
+            </property>
+            <property name="envPropValues">
+                <property-ui type="textAreaBox"
+                             label="Environment Property Values"
+                             hidden="true"
+                             description="Specify environment variables by separating the name and value by an
+                                equals sign and each pair by a newline or comma. Values specified here will
+                                take precedence over the environment script variables."
+                             default-value="${p:environment/allProperties}"/>
+            </property>
+            <property name="saveScript">
+                <property-ui type="checkBox"
+                             label="Do Not Delete Script" hidden="true"
+                             description="Select to save the plugin's generated executable script to analyze and run manually later."
+                             default-value="false"/>
+            </property>
+            <property name="verbose" required="false">
+                <property-ui type="checkBox" label="Verbose Output" hidden="true"
+                             description="Select this option to display verbose output during execution."/>
+            </property>
+            <property name="debug" required="false">
+                <property-ui type="checkBox" label="Debug Output" hidden="true"
+                             description="Select this option to display debug output during execution."/>
+            </property>
+        </properties>
+        <post-processing><![CDATA[
+        if (properties.get("exitCode") != 0) {
+            properties.put("Status", "Failure");
+        }
+        else {
+            properties.put("Status", "Success");
+        }
+     ]]></post-processing>
+        <command program="${GROOVY_HOME}/bin/groovy">
+            <arg value="-cp"/>
+            <arg path="classes:lib/DockerSwarm.jar"/>
+            <arg value="-Djnp.disableDiscovery=true"/>
+            <arg file="StackRemove.groovy"/>
+            <arg file="${PLUGIN_INPUT_PROPS}"/>
+            <arg file="${PLUGIN_OUTPUT_PROPS}"/>
+        </command>
+    </step-type>
+
+    <step-type name="Docker Management (Generic)">
+        <description>This step runs a generic docker management command.</description>
+        <properties>
+            <property name="command" required="true">
+                <property-ui type="selectBox"
+                             label="Management Command"
+                             description="Select the docker management command to run."/>
+                <value label="node">node</value>
+                <value label="stack">stack</value>
+                <value label="secret">secret</value>
+                <value label="service">service</value>
+                <value label="swarm">swarm</value>
+            </property>
+            <property name="dockerOptions">
+                <property-ui type="textBox"
+                             label="Additional Options"
+                             description="Specify additional command-line options for the docker command."/>
+            </property>
+            <property name="scriptPaths">
+                <property-ui type="textBox"
+                             label="Environment Script Paths"
+                             description="Specify the paths to shell scripts to run before the docker command runs.
+                                This property is utilized only on *nix machines."/>
+            </property>
+            <property name="commandPath" required="false">
+                <property-ui type="textBox" hidden="true"
+                             label="Compose Path"
+                             description="The name of the docker command if it is in the system path,
+                                or the full path to run the docker command."/>
+            </property>
+            <property name="envPropValues">
+                <property-ui type="textAreaBox"
+                             label="Environment Property Values"
+                             hidden="true"
+                             description="Specify environment variables by separating the name and value by an
+                                equals sign and each pair by a newline or comma. Values specified here will
+                                take precedence over the environment script variables."
+                             default-value="${p:environment/allProperties}"/>
+            </property>
+            <property name="saveScript">
+                <property-ui type="checkBox"
+                             label="Do Not Delete Script" hidden="true"
+                             description="Select to save the plugin's generated executable script to analyze and run manually later."
+                             default-value="false"/>
+            </property>
+            <property name="verbose" required="false">
+                <property-ui type="checkBox" label="Verbose Output" hidden="true"
+                             description="Select this option to display verbose output during execution."/>
+            </property>
+            <property name="debug" required="false">
+                <property-ui type="checkBox" label="Debug Output" hidden="true"
+                             description="Select this option to display debug output during execution."/>
+            </property>
+        </properties>
+        <post-processing><![CDATA[
+        if (properties.get("exitCode") != 0) {
+            properties.put("Status", "Failure");
+        }
+        else {
+            properties.put("Status", "Success");
+        }
+     ]]></post-processing>
+        <command program="${GROOVY_HOME}/bin/groovy">
+            <arg value="-cp"/>
+            <arg path="classes:lib/DockerSwarm.jar"/>
+            <arg value="-Djnp.disableDiscovery=true"/>
+            <arg file="DockerGeneric.groovy"/>
+            <arg file="${PLUGIN_INPUT_PROPS}"/>
+            <arg file="${PLUGIN_OUTPUT_PROPS}"/>
+        </command>
+    </step-type>
+
+</plugin>

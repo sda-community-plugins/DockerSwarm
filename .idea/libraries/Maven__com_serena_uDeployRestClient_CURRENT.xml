@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:uDeployRestClient:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/uDeployRestClient/CURRENT/uDeployRestClient-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/uDeployRestClient/CURRENT/uDeployRestClient-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/uDeployRestClient/CURRENT/uDeployRestClient-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

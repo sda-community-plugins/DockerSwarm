@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:winapi:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/winapi/CURRENT/winapi-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/winapi/CURRENT/winapi-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/winapi/CURRENT/winapi-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

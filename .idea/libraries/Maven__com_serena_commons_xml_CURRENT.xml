@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:commons-xml:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/commons-xml/CURRENT/commons-xml-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/commons-xml/CURRENT/commons-xml-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/commons-xml/CURRENT/commons-xml-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

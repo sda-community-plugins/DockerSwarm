@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:anthill-shell:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/anthill-shell/CURRENT/anthill-shell-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/anthill-shell/CURRENT/anthill-shell-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/anthill-shell/CURRENT/anthill-shell-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

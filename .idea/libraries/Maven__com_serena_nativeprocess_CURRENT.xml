@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.serena:nativeprocess:CURRENT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/nativeprocess/CURRENT/nativeprocess-CURRENT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/nativeprocess/CURRENT/nativeprocess-CURRENT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/serena/nativeprocess/CURRENT/nativeprocess-CURRENT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
